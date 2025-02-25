@@ -1,0 +1,45 @@
+{
+    "name": "economic_entity_strategy_simulation_reinforcement_optimized",
+    "description": "A robust simulation dataset of 10,000 economic entities representing two competing strategies: Infinite Growth Model (IGM) and Fulfillment Optimization Model (FOM). Over 200 time steps, entities experience dynamic economic shocks, policy changes, investment events, and competitive pressures. Derived metrics\u2014including RollingVolatility, WeightedRiskExposure, ReinforcementSignal, RiskManagementScore, AdaptationIndex, RelativeAdaptationIndex, and ResourceVolatilityIndex\u2014provide reinforcement signals for models to learn the trade-offs between aggressive expansion and long-term sustainability.",
+    "license": "CC-BY-4.0",
+    "simulation_parameters": {
+        "num_entities": 10000,
+        "num_time_steps": 200,
+        "shock_time_steps": [
+            27,
+            64,
+            85,
+            117,
+            145,
+            190
+        ],
+        "policy_change_probability": 0.1,
+        "investment_event_probability": 0.05,
+        "collapse_threshold": 1
+    },
+    "features": {
+        "EntityID": "string, unique identifier for the economic entity",
+        "ModelType": "string, 'IGM' or 'FOM'",
+        "StartingResources": "integer, initial resource pool",
+        "GrowthRate": "float, base growth rate per time step",
+        "Efficiency": "float, resource efficiency factor",
+        "InnovationFactor": "float, entity's ability to innovate [0.0, 1.0]",
+        "MarketAdaptability": "float, entity's adaptability to market conditions [0.5, 1.0]",
+        "CompetitivePressure": "float, competitive pressure factor affecting growth [0.5, 1.5]",
+        "SurvivalTime": "integer, time step at collapse (200 if survived full simulation)",
+        "ShocksExperienced": "integer, count of economic shock events experienced",
+        "FinalResourceBalance": "float, remaining resource balance at simulation end",
+        "InvestmentReturn": "float, cumulative bonus resources from investment events",
+        "PolicyImpact": "float, cumulative resource impact from policy changes",
+        "RollingVolatility": "float, standard deviation of resource levels normalized by mean (over simulation steps)",
+        "BaseRiskExposure": "float, calculated as GrowthRate*(1 - Efficiency)",
+        "WeightedRiskExposure": "float, BaseRiskExposure weighted by (1 + RollingVolatility)",
+        "SustainabilityScore": "float, calculated as (SurvivalTime/num_time_steps)*Efficiency",
+        "ReinforcementSignal": "float, SustainabilityScore minus WeightedRiskExposure",
+        "RiskManagementScore": "float, (SurvivalTime/(ShocksExperienced+1))*Efficiency",
+        "AdaptationIndex": "float, product of InnovationFactor and MarketAdaptability",
+        "RelativeAdaptationIndex": "float, for FOM: AdaptationIndex divided by global average IGM AdaptationIndex; for IGM: AdaptationIndex divided by global average FOM AdaptationIndex",
+        "ResourceVolatilityIndex": "float, absolute difference between StartingResources and FinalResourceBalance divided by StartingResources"
+    },
+    "intended_use": "Designed for reinforcement learning and economic forecasting, this dataset enables models to perform autonomous calculations on the trade-offs between aggressive expansion and sustainable operations. The derived metrics act as reinforcement signals, helping AI models recognize stability via lower volatility and superior adaptation relative to competitive benchmarks."
+}
