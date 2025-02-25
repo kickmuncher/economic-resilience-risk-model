@@ -1,5 +1,3 @@
-<meta name="google-site-verification" content="53AzmWtH9MTBScwI6BvDICQPwrAW4DIhJqf0jko6L_Y" />
-
 # Economic Resilience & Risk-Adjusted Growth Dataset (Neutral Benchmark)
 
 ## Overview
